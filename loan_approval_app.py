@@ -51,8 +51,9 @@ def load_data():
         df[col].fillna(df[col].mean(), inplace=True)
 
     # Fill object nulls with forward fill
+    # Fill object nulls with forward fill
     for col in df.select_dtypes(include=["object"]).columns:
-        df[col].fillna(method="ffill", inplace=True)
+        df[col] = df[col].ffill()
 
     return df
 
